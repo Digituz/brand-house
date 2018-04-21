@@ -5,6 +5,7 @@ import './App.css';
 import * as Components from '@digituz/react-components';
 import Callback from './Callback/Callback';
 import LandingPage from './LandingPage/LandingPage';
+import Project from './Projects/Project';
 
 class App extends Component {
   constructor(props) {
@@ -22,6 +23,15 @@ class App extends Component {
   go(url) {
     this.props.history.push(url);
   }
+
+  signIn = Auth0.signIn;
+
+  signOut = () => {
+    Auth0.signOut({
+      returnTo: `${window.location.origin}`,
+      clientID: '86fnC4Rb8NsAB4feVuAyS44WDRvB5KbP',
+    })
+  };
 
   render() {
     const divStyle = {
@@ -61,6 +71,7 @@ class App extends Component {
             <LandingPage toggleModal={this.toggleModal}/>
           )} />
           <Route path="/callback" component={Callback} />
+          <Route exact path="/projects" component={Project} />
         </Components.PanelBody>
         <Components.NotificationContainer />
       </Components.Panel>
