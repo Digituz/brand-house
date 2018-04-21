@@ -4,9 +4,12 @@
   "private": true,
   "dependencies": {
     "@digituz/react-components": "^1.2.12",
+    "auth0-web": "^1.7.0",
     "axios": "^0.18.0",
+    "prop-types": "^15.6.1",
     "react": "^16.3.2",
     "react-dom": "^16.3.2",
+    "react-router-dom": "^4.2.2",
     "react-scripts": "1.1.4"
   },
   "scripts": {
