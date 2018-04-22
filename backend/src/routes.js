@@ -28,6 +28,14 @@ router.get('/', checkJwt, async (req, res) => {
   );
 });
 
+// retrieve specific project
+router.get('/:id', checkJwt, async (req, res) => {
+  const collection = await getProjectsCollection();
+  res.send(
+    await collection.findOne({_id: req.params.id})
+  );
+});
+
 // insert a new projects
 router.post('/', checkJwt, async (req, res) => {
   const collection = await getProjectsCollection();

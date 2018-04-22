@@ -5,6 +5,7 @@ import './App.css';
 import * as Components from '@digituz/react-components';
 import Callback from './Callback/Callback';
 import LandingPage from './LandingPage/LandingPage';
+import Projects from './Projects/Projects';
 import Project from './Projects/Project';
 
 class App extends Component {
@@ -32,6 +33,11 @@ class App extends Component {
       clientID: '86fnC4Rb8NsAB4feVuAyS44WDRvB5KbP',
     })
   };
+
+  guardedRoute(url) {
+    if (Auth0.isAuthenticated()) return this.go(url);
+    Components.NotificationManager.warning('Sign in first, please.');
+  }
 
   render() {
     const divStyle = {
@@ -71,7 +77,8 @@ class App extends Component {
             <LandingPage toggleModal={this.toggleModal}/>
           )} />
           <Route path="/callback" component={Callback} />
-          <Route exact path="/projects" component={Project} />
+          <Route exact path="/projects" component={Projects} />
+          <Route path="/projects/:id" component={Project} />
         </Components.PanelBody>
         <Components.NotificationContainer />
       </Components.Panel>

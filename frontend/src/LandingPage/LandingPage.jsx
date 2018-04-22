@@ -1,6 +1,5 @@
 import * as Auth0 from 'auth0-web';
 import React, {Component} from 'react';
-import PropTypes from 'prop-types';
 import {Button, Card, Grid, If} from '@digituz/react-components';
 
 class LandingPage extends Component {
@@ -52,9 +51,5 @@ class LandingPage extends Component {
     );
   }
 }
-
-LandingPage.propTypes = {
-  toggleModal: PropTypes.func.isRequired,
-};
 
 export default LandingPage;
