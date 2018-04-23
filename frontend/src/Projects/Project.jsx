@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {withRouter} from 'react-router-dom';
 import {Button, Card, Grid, InputLabel, NotificationManager} from '@digituz/react-components';
-import * as ProjectsService from './ProjectsService';
+import RestFlexClient from  '@digituz/rest-flex-client';
 
 class Project extends Component {
   constructor() {
@@ -15,12 +15,14 @@ class Project extends Component {
         description: '',
       }
     };
+
+    this.client = new RestFlexClient('http://localhost:3001/');
   }
 
   async componentDidMount() {
     const id = this.props.match.params.id;
     if (!id) return;
-    const project = (await ProjectsService.get(id));
+    const project = (await this.client.get(id));
     this.setState({
       id,
       project,
@@ -42,8 +44,7 @@ class Project extends Component {
 
   save() {
     if (this.state.id) {
-      return ProjectsService
-        .update(this.state.id, this.state.project)
+      return this.client.update(this.state.id, this.state.project)
         .then(() => {
           this.props.history.push('/projects');
           NotificationManager.success('Project updated successfully.');
@@ -53,8 +54,8 @@ class Project extends Component {
           NotificationManager.danger('Something went wrong.');
         });
     }
-    ProjectsService
-      .insert(this.state.project)
+
+    this.client.insert(this.state.project)
       .then(() => {
         this.props.history.push('/project');
         NotificationManager.success('Project inserted successfully.');

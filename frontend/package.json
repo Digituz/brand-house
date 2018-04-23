@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "@digituz/react-components": "^1.2.12",
+    "@digituz/rest-flex-client": "^1.0.1",
     "auth0-web": "^1.7.0",
     "axios": "^0.18.0",
     "prop-types": "^15.6.1",

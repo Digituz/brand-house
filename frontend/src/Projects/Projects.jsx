@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {withRouter} from 'react-router-dom';
 import {Card, Button, DropDown, NotificationManager, Table} from '@digituz/react-components';
 import {maskDate} from 'mask-js';
-import * as ProjectsService from './ProjectsService';
+import RestFlexClient from  '@digituz/rest-flex-client';
 
 class Projects extends Component {
   constructor() {
@@ -10,7 +10,9 @@ class Projects extends Component {
     this.editProject = this.editProject.bind(this);
     this.state = {
       data: [],
-    }
+    };
+
+    this.client = new RestFlexClient('http://localhost:3001/');
   }
 
   editProject(project) {
@@ -22,7 +24,7 @@ class Projects extends Component {
   }
 
   deleteProject(project) {
-    ProjectsService.remove(project._id)
+    this.client.remove(project._id)
       .then(() => {
         this.props.history.push('/projects');
         NotificationManager.success('Project removed successfully.');
@@ -39,7 +41,7 @@ class Projects extends Component {
   }
 
   loadProjects() {
-    const data = ProjectsService.get();
+    const data = this.client.get();
     this.setState({
       data,
     });

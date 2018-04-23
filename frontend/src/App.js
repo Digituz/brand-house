@@ -13,11 +13,11 @@ class App extends Component {
     super(props);
     Auth0.configure({
       domain: 'digituz-corp.auth0.com',
-      audience: 'https://brand-house.digituz.com.br',
+      audience: 'https://projects.digituz.com.br',
       clientID: '86fnC4Rb8NsAB4feVuAyS44WDRvB5KbP',
       redirectUri: `${window.location.origin}/callback`,
       responseType: 'token id_token',
-      scope: 'openid profile'
+      scope: 'openid profile get:projects post:projects delete:projects put:projects'
     });
   }
 
