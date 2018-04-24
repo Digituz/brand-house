@@ -5,8 +5,7 @@ import './App.css';
 import * as Components from '@digituz/react-components';
 import Callback from './Callback/Callback';
 import LandingPage from './LandingPage/LandingPage';
-import Projects from './Projects/Projects';
-import Project from './Projects/Project';
+import Project from './Entities/Project';
 
 class App extends Component {
   constructor(props) {
@@ -48,13 +47,14 @@ class App extends Component {
     const submenus = [{
       title: 'Menu',
       items: [
-        { title: 'Overview', color: 'gray', onClick: () => { this.guardedRoute('/') } },
         { title: 'Board', color: '#e6665b', onClick: () => { this.guardedRoute('/board') } },
         { title: 'Projects', color: '#66ad66', onClick: () => { this.guardedRoute('/projects') } },
-        { title: 'Teams', color: '#5e5eff', onClick: () => { this.guardedRoute('/teams') } },
-        { title: 'Configuration', color: 'gray', onClick: () => { this.guardedRoute('/configuration') } }
       ]
     }];
+
+    const routes = [
+      { model: Project, tableColumns: ['startedAt', 'title'], key: Project.path }
+    ];
 
     return (
       <Components.Panel>
@@ -77,8 +77,9 @@ class App extends Component {
             <LandingPage toggleModal={this.toggleModal}/>
           )} />
           <Route path="/callback" component={Callback} />
-          <Route exact path="/projects" component={Projects} />
-          <Route path="/projects/:id" component={Project} />
+          {routes.map((route) => (
+            <Components.RestFlexRoute {...route} />
+          ))}
         </Components.PanelBody>
         <Components.NotificationContainer />
       </Components.Panel>

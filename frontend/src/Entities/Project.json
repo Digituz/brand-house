@@ -1,0 +1,36 @@
+{
+  "url": "http://localhost:3001",
+  "path": "/projects",
+  "domain": "Project",
+  "title": "Project",
+  "plural": "Projects",
+  "description": "Create and manage projects with ease.",
+  "type": "object",
+  "properties": {
+    "title": {
+      "type": "string",
+      "label": "Title",
+      "placeholder": "Enter a title to your project.",
+      "max": "50"
+    },
+    "description": {
+      "type": "string",
+      "label": "Description",
+      "placeholder": "Enter a description to your project.",
+      "input-type": "textarea",
+      "max": "2000"
+    },
+    "status": {
+      "type": "string",
+      "label": "Status",
+      "placeholder": "Current status of your project.",
+      "max": "50"
+    },
+    "startedAt": {
+      "type": "string",
+      "format": "date",
+      "label": "Started At"
+    }
+  },
+  "required": ["title", "status"]
+}
