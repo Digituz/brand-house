@@ -1,4 +1,4 @@
-import * as Auth0 from 'auth0-web';
+import * as Auth0 from '@digituz/auth0-web';
 import React, {Component} from 'react';
 import { withRouter } from 'react-router-dom';
 import './Callback.css';
