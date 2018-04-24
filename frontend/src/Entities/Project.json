@@ -26,6 +26,12 @@
       "placeholder": "Current status of your project.",
       "max": "50"
     },
+    "budget": {
+      "type": "number",
+      "format": "currency",
+      "label": "Budget",
+      "placeholder": "Budget amount for this project."
+    },
     "startedAt": {
       "type": "string",
       "format": "date",

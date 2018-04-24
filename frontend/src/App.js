@@ -53,7 +53,7 @@ class App extends Component {
     }];
 
     const routes = [
-      { model: Project, tableColumns: ['startedAt', 'title'], key: Project.path }
+      { model: Project, tableColumns: ['startedAt', 'title', 'budget'], key: Project.path }
     ];
 
     return (
