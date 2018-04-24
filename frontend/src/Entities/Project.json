@@ -1,7 +1,8 @@
 {
   "url": "http://localhost:3001",
   "path": "/projects",
-  "domain": "Project",
+  "audience": "https://projects.digituz.com.br",
+  "domain": "projects",
   "title": "Project",
   "plural": "Projects",
   "description": "Create and manage projects with ease.",
@@ -17,7 +18,7 @@
       "type": "string",
       "label": "Description",
       "placeholder": "Enter a description to your project.",
-      "input-type": "textarea",
+      "inputType": "textarea",
       "max": "2000"
     },
     "status": {

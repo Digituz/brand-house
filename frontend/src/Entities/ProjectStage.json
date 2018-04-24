@@ -1,0 +1,32 @@
+{
+  "url": "http://localhost:3003",
+  "path": "/project-stages",
+  "audience": "https://project-stages.digituz.com.br",
+  "domain": "project-stages",
+  "title": "Project Stages",
+  "plural": "Project Stages",
+  "description": "Create project stages to organize your projects.",
+  "type": "object",
+  "properties": {
+    "order": {
+      "type": "number",
+      "label": "Order",
+      "placeholder": "A number to represent on what step this appears.",
+      "max": "5"
+    },
+    "title": {
+      "type": "string",
+      "label": "Title",
+      "placeholder": "Enter a title to your project.",
+      "max": "50"
+    },
+    "description": {
+      "type": "string",
+      "label": "Description",
+      "placeholder": "Enter a description to your project.",
+      "inputType": "textarea",
+      "max": "2000"
+    }
+  },
+  "required": ["title"]
+}

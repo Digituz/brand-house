@@ -5,19 +5,24 @@ import './App.css';
 import * as Components from '@digituz/react-components';
 import Callback from './Callback/Callback';
 import LandingPage from './LandingPage/LandingPage';
+import Company from './Entities/Company';
 import Project from './Entities/Project';
+import ProjectStage from './Entities/ProjectStage';
 
 class App extends Component {
   constructor(props) {
     super(props);
-    Auth0.configure({
+
+    this.auth0Config = {
       domain: 'digituz-corp.auth0.com',
       audience: 'https://projects.digituz.com.br',
       clientID: '86fnC4Rb8NsAB4feVuAyS44WDRvB5KbP',
       redirectUri: `${window.location.origin}/callback`,
       responseType: 'token id_token',
-      scope: 'openid profile get:projects post:projects delete:projects put:projects'
-    });
+      scope: 'openid profile'
+    };
+
+    Auth0.configure(this.auth0Config);
   }
 
   go(url) {
@@ -49,11 +54,15 @@ class App extends Component {
       items: [
         { title: 'Board', color: '#e6665b', onClick: () => { this.guardedRoute('/board') } },
         { title: 'Projects', color: '#66ad66', onClick: () => { this.guardedRoute('/projects') } },
+        { title: 'Companies', color: '#5e5eff', onClick: () => { this.guardedRoute('/companies') } },
+        { title: 'Project Stages', color: 'gray', onClick: () => { this.guardedRoute('/project-stages') } },
       ]
     }];
 
     const routes = [
-      { model: Project, tableColumns: ['startedAt', 'title', 'budget'], key: Project.path }
+      { model: Project, tableColumns: ['startedAt', 'title', 'budget'], key: Project.path },
+      { model: Company, tableColumns: ['tradingName', 'phoneNumber'], key: Company.path },
+      { model: ProjectStage, tableColumns: ['title'], key: ProjectStage.path }
     ];
 
     return (
@@ -78,7 +87,7 @@ class App extends Component {
           )} />
           <Route path="/callback" component={Callback} />
           {routes.map((route) => (
-            <Components.RestFlexRoute {...route} />
+            <Components.RestFlexRoute {...route} auth0Config={this.auth0Config} />
           ))}
         </Components.PanelBody>
         <Components.NotificationContainer />
