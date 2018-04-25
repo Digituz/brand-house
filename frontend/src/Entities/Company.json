@@ -30,6 +30,10 @@
       "label": "Address",
       "placeholder": "Enter the address of the company.",
       "max": "250"
+    },
+    "logo": {
+      "type": "file",
+      "label": "Logo"
     }
   },
   "required": ["companyName", "tradingName", "phoneNumber"]
