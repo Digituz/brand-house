@@ -59,6 +59,10 @@ class App extends Component {
       ]
     }];
 
+    Project.url = process.env.REACT_APP_PROJECTS_API;
+    Company.url = process.env.REACT_APP_COMPANIES_API;
+    ProjectStage.url = process.env.REACT_APP_PROJECT_STAGES_API;
+
     const routes = [
       { model: Project, tableColumns: ['startedAt', 'title', 'budget'], key: Project.path },
       { model: Company, tableColumns: ['tradingName', 'phoneNumber'], key: Company.path },

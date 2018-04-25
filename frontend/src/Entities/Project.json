@@ -1,5 +1,4 @@
 {
-  "url": "http://localhost:3001",
   "path": "/projects",
   "audience": "https://projects.digituz.com.br",
   "domain": "projects",
